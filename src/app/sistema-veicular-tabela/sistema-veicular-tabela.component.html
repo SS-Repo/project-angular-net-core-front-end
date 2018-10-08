@@ -1,0 +1,76 @@
+<!--Tabela-->
+<div class="table-responsive-sm">
+  <table id="tabela" class="table table-striped table-bordered" style="width:100%">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Proprietario</th>
+        <th scope="col">Modelo</th>
+        <th scope="col">Placa</th>
+        <th scope="col">Imagem</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let veic of veiculos">
+        <th scope="row">{{ veic.id }}</th>
+        <td>{{ veic.nome }}</td>
+        <td>{{ veic.modelo }}</td>
+        <td>{{ veic.placa }}</td>
+        <td>{{ veic.url }}</td>
+        <td>
+          <div class="row">
+            <div class="col">
+              <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#Atualizar" (click)="getVeiculosById(veic.id)">
+                Atualizar
+              </button>
+            </div>
+            <div class="col">
+              <button type="button" class="btn btn-danger" (click)="deleteVeiculos(veic.id)">Excluir</button>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!--Modal-->
+<div class="modal fade" id="Atualizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Atualizar Cadastro</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formulario">
+          <div class="form-group">
+            <label for="inputNome">Nome - Proprietario do Veiculo</label>
+            <input type="text" class="form-control" id="inputNome" formControlName="nome">
+          </div>
+          
+          <div class="form-group">
+            <label for="inputVeiculo">Modelo do Veiculo</label>
+            <input type="text" class="form-control" id="inputVeiculo" formControlName="modelo">
+          </div>
+         
+          <div class="form-group">
+            <label for="inputPlaca">Placa do Veiculo</label>
+            <input type="text" class="form-control" id="inputPlaca" formControlName="placa">
+          </div>
+
+          <div class="form-group">
+            <label for="controlArquivos">Alterar imagem</label>
+            <input type="file" class="form-control-file" id="controlArquivos" formControlName="url">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-primary" (click)="updateVeiculos(formulario)">Salvar Mudanças</button>
+      </div>
+    </div>
+  </div>
+</div>

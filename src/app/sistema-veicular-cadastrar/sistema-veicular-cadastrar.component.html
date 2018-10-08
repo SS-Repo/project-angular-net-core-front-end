@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col-2">
+
+  </div>
+  <div class="col-8">
+      <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+          <h5>Cadastro de Veiculo</h5>
+          <div class="form-group">
+              <label for="inputNome">Nome - Proprietario do Veiculo</label>
+              <input type="text" class="form-control" id="inputNome" placeholder="Entre com seu nome" formControlName="nome" 
+              (focusout)="getNome()">
+          </div>
+          <div class="alert alert-danger" [hidden]="boolNome">
+                  {{ msgErroNome }}
+              </div>
+          <div class="form-group">
+              <label for="inputVeiculo">Modelo do Veiculo</label>
+              <input type="text" class="form-control" id="inputVeiculo" placeholder="Ex:Civic,Corolla,Hillux" formControlName="modelo"
+              (focusout)="getModelo()">
+          </div>
+          <div class="alert alert-danger" [hidden]="boolModelo">
+                {{ msgErroModelo }}
+            </div>
+          <div class="form-group">
+              <label for="inputPlaca">Placa do Veiculo</label>
+              <input type="text" class="form-control" id="inputPlaca" placeholder="Ex:XSS5050,UUA9090" formControlName="placa" (focusout)="getPlaca()">
+          </div>
+          <div class="alert alert-danger" [hidden]="boolPlaca">
+            {{ msgErroPlaca }}
+          </div>
+      
+          <div class="form-group">
+              <label for="controlArquivos">Escolha uma imagem</label>
+              <input type="file" class="form-control-file" id="controlArquivos" formControlName="urlImagem">
+          </div>
+          <div class="row">
+              <div class="col">
+                  <button type="submit" class="btn btn-primary">Cadastrar</button>
+              </div>
+              <div class="col">
+                  <button type="button" class="btn btn-primary" (click) = "voltar()" >Voltar</button>
+              </div>
+          </div>
+      </form>
+  </div>
+  <div class="col-12">
+      <br>
+     <app-form-debug [form]="formulario"></app-form-debug>
+  </div>
+</div>
