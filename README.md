@@ -9,6 +9,7 @@ Tecnologias Usadas:
 - Angular 6
 - Boostrap 4.1.3
 - Postgres 10
+- Typescript
 
 Sergio Silveira Desenvolvedor Web 
 
